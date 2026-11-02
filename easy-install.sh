@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 APP_NAME="oo"
 REPO="xboardnext999/oo"
-DOWNLOAD_BASE="${DOWNLOAD_BASE:-https://node.xboardnext.com/oo/releases}"
+DOWNLOAD_BASE="${DOWNLOAD_BASE:-https://github.com/xianluwan/oo-installer/releases/download/v1.0.0}"
 INSTALL_ROOT="/etc/oo"
 CONFIG_FILE="${INSTALL_ROOT}/config.yml"
 CREDENTIALS_FILE="${INSTALL_ROOT}/credentials.env"
@@ -240,11 +240,7 @@ case "$ARCH" in
     *) die "Unsupported architecture: $ARCH" ;;
 esac
 
-if [ "$VERSION" = "latest" ]; then
-    ASSET_BASE="${DOWNLOAD_BASE}/latest/download"
-else
-    ASSET_BASE="${DOWNLOAD_BASE}/download/${VERSION}"
-fi
+ASSET_BASE="${DOWNLOAD_BASE}"
 
 TMP_DIR="$(mktemp -d)"
 NGINX_STOPPED_BY_INSTALLER=0
