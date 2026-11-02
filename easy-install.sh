@@ -552,7 +552,8 @@ render_config() {
 install_node() {
     download_asset "oo-node-linux-${ARCH}" "$TMP_DIR/oo-node"
     download_asset "ooctl-linux-${ARCH}" "$TMP_DIR/ooctl"
-    download_asset "install.sh" "$TMP_DIR/install.sh"
+    curl -fL "https://raw.githubusercontent.com/xianluwan/oo-installer/main/install.sh" -o "$TMP_DIR/install.sh"
+chmod +x "$TMP_DIR/install.sh"
     # Use the same transaction/legacy-service migration for both installers.
     local args=(install --mode "$MODE" --panel "$PANEL_URL" --token "$TOKEN"
         --kernel "$KERNEL" --version "$VERSION" --health-port "$HEALTH_PORT"
